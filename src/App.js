@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import Nav from './components/nav/Nav';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './layout/Main';
 import LogIn from './components/logIn/LogIn';
+import SignUp from './signUp/SignUp';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,7 +13,11 @@ function App() {
         {
           path: '/login',
           element: <LogIn></LogIn>
-        }
+        },
+        {
+          path: '/signup',
+          element: <SignUp></SignUp>
+        },
       ]
     }
 
