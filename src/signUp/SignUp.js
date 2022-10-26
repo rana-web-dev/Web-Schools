@@ -31,8 +31,12 @@ const SignUp = () => {
     return (
         <form onSubmit={signUpHandle} className='w-50 mt-5 mx-auto'>
             <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Your Name</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">Full Name</label>
                 <input type="text" name='name' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            </div>
+            <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">Photo URL</label>
+                <input type="url" name='photoURL' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Email Address</label>
