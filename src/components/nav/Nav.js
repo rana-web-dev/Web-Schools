@@ -16,6 +16,7 @@ const Nav = () => {
                     <Link to='*' className='me-3 text-decoration-none'>FAQ</Link>
                     <Link to='*' className='me-3 text-decoration-none'>Blog</Link>
                     <Link to='*' className='me-3 text-decoration-none'>Dark</Link>
+                    <Link to='/signup' className='me-3 text-decoration-none'>Sign Up</Link>
                     <Link to='/login' className='me-3 text-decoration-none'>Log In</Link>
                     <Link to='' className='cursor-pointer' title='user'>
                         <i className="fa fav-solid fa-user"></i>
