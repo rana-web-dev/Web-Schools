@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 
 const Nav = () => {
+
+    const [open, setOpen] = useState(false);
+
     return (
         <nav className="navbar navbar-expand-sm navbar-dark py-3 border-bottom">
             <div className="container-fluid d-flex justify-content-between">
@@ -15,7 +18,13 @@ const Nav = () => {
                     <Link to='/courses' className='me-3 text-decoration-none'>Courses</Link>
                     <Link to='/faq' className='me-3 text-decoration-none'>FAQ</Link>
                     <Link to='/blog' className='me-3 text-decoration-none'>Blog</Link>
-                    <Link to='' className='me-3 text-decoration-none'>Dark</Link>
+                    
+                    {
+                    open ?
+                    <Link to='' className='me-3 text-decoration-none' onClick={() => setOpen(!open)}>Dark</Link>
+                    : <Link to='' className='me-3 text-decoration-none' onClick={() => setOpen(!open)}>Light</Link>
+                    }
+
                     <Link to='/signup' className='me-3 text-decoration-none'>Sign Up</Link>
                     <Link to='/login' className='me-3 text-decoration-none'>Log In</Link>
                     <Link to='' className='cursor-pointer' title='user'>

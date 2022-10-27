@@ -7,6 +7,13 @@ import Courses from './components/courses/Courses';
 import Home from './components/home/Home';
 import Faq from './components/faq/Faq';
 import Blog from './components/blog/Blog';
+import Html from './components/coursePage/Html';
+import Css from './components/coursePage/Css';
+import Js from './components/coursePage/Js';
+import React from './components/coursePage/React';
+import Angular from './components/coursePage/Angular';
+import Python from './components/coursePage/Python';
+import Reacts from './components/coursePage/React';
 
 function App() {
   const router = createBrowserRouter([
@@ -38,13 +45,48 @@ function App() {
           path: '/courses',
           loader: () => fetch('https://server-rana-web-dev.vercel.app/'),
           element: <Courses></Courses>
-        }
+        },
+        {
+          path: '/courseDetails/:id',
+          loader: ({ params }) => fetch(`https://server-rana-web-dev.vercel.app/${params.id}`),
+          element: <Courses></Courses>
+        },
+        {
+          path: '/courseDetails/1',
+          loader: () => fetch('https://server-rana-web-dev.vercel.app/category'),
+          element: <Html></Html>
+        },
+        {
+          path: '/courseDetails/2',
+          loader: () => fetch('https://server-rana-web-dev.vercel.app/category'),
+          element: <Css></Css>
+        },
+        {
+          path: '/courseDetails/3',
+          loader: () => fetch('https://server-rana-web-dev.vercel.app/category'),
+          element: <Js></Js>
+        },
+        {
+          path: '/courseDetails/4',
+          loader: () => fetch('https://server-rana-web-dev.vercel.app/category'),
+          element: <Reacts></Reacts>
+        },
+        {
+          path: '/courseDetails/5',
+          loader: () => fetch('https://server-rana-web-dev.vercel.app/category'),
+          element: <Angular></Angular>
+        },
+        {
+          path: '/courseDetails/6',
+          loader: () => fetch('https://server-rana-web-dev.vercel.app/category'),
+          element: <Python></Python>
+        },
       ]
     }
   ])
   return (
     <div className="container-fluid">
-      <RouterProvider router={router}></RouterProvider>  
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }

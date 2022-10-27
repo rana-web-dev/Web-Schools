@@ -3,32 +3,38 @@ import { Link } from 'react-router-dom';
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import app from '../firebase/Firebase';
+import { useState } from 'react';
 
 const auth = getAuth(app);
 
 
 const SignUp = () => {
 
+    const [error, setError] = useState();
+
 
     const signUpHandle = (event) => {
         event.preventDefault();
         const form = event.target;
-        const displayName = form.displayName;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(displayName, email, password)
+        form.reset();
+        console.log(photoURL, email, password)
 
 
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                
             })
             .catch(error => {
-                console.error('Error', error)
+                setError('Error', error)
             })
-
     }
+
+ 
 
 
     return (
@@ -52,6 +58,11 @@ const SignUp = () => {
             <div className="mb-3">
                 <Link to='/login'>Have an account?</Link>
             </div>
+            
+            <div className="mb-3">
+                <Link to='/login'>{error}</Link>
+            </div>
+
             <button type="submit" className="btn btn-primary">Sig Up</button>
         </form>
     );
