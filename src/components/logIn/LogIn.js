@@ -35,6 +35,7 @@ const LogIn = () => {
             form.reset();
         })
         .catch((error) => {
+            setLoginSuccess('');
             setError(error.message)
             console.log('error', error)
         })

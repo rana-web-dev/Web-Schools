@@ -10,6 +10,7 @@ const auth = getAuth(app);
 
 const SignUp = () => {
 
+    const [userCreateSuccess, setUserCreateSuccess] = useState('');
     const [error, setError] = useState();
 
 
@@ -31,10 +32,13 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                
+                setUserCreateSuccess('User Create Success.')
+                setError('');
+                form.reset();                
             })
             .catch(error => {
                 setError(error.message)
+                setUserCreateSuccess('');
             })
     }
 
@@ -62,7 +66,10 @@ const SignUp = () => {
             </div>
             
             <div className="mb-3">
-                <Link to='/login'>{error}</Link>
+                <p className='text-danger'>{error}</p>
+            </div>
+            <div className="mb-3">
+                <p className='text-success'>{userCreateSuccess}</p>
             </div>
 
             <button type="submit" className="btn btn-primary">Sig Up</button>
