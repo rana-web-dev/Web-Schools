@@ -14,6 +14,7 @@ import React from './components/coursePage/React';
 import Angular from './components/coursePage/Angular';
 import Python from './components/coursePage/Python';
 import Reacts from './components/coursePage/React';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ function App() {
       path: '/',
       element: <Main></Main>,
       children: [
+        {
+          path: '/',
+          element: <Home></Home>
+        },
         {
           path: '/home',
           element: <Home></Home>
@@ -80,8 +85,12 @@ function App() {
           path: '/courseDetails/6',
           loader: () => fetch('https://server-rana-web-dev.vercel.app/category'),
           element: <Python></Python>
-        },
+        }
       ]
+    },
+    {
+      path: '*',
+      element: <PageNotFound></PageNotFound>
     }
   ])
   return (

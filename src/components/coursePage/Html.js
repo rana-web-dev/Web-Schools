@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import HtmlIntro from './contents/HtmlIntro';
 
 const Html = () => {
 
@@ -18,7 +20,10 @@ const Html = () => {
                 }
             </div>
             <div className='content px-3'>
-                <p>Content</p>
+                <Routes>
+                    <Route path={`${html.id}`} element={<HtmlIntro></HtmlIntro>}></Route>
+                    
+                </Routes>
             </div>
         </div>
     );
