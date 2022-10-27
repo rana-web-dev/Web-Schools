@@ -30,11 +30,9 @@ const SignUp = () => {
                 
             })
             .catch(error => {
-                setError('Error', error)
+                setError(error)
             })
     }
-
- 
 
 
     return (

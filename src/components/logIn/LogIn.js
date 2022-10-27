@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 import app from '../../firebase/Firebase';
@@ -8,6 +8,8 @@ import app from '../../firebase/Firebase';
 const auth = getAuth(app);
 
 const LogIn = () => {
+
+    const [error, setError] = useState('');
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -22,8 +24,12 @@ const LogIn = () => {
         form.reset();
 
         // You can't hold empty field
-        if (email === '' && password === '') {
-            alert('You have to type email and password')
+        if (email === '') {
+            alert('email empty')
+        }
+
+        if (password === '') {
+            alert('password empty')
         }
 
 
@@ -52,6 +58,7 @@ const LogIn = () => {
 
         })
         .catch(error => {
+            setError(error.message)
             console.error('Error:', error);
             console.error('Error:', error.message);
         })
@@ -69,6 +76,9 @@ const LogIn = () => {
             </div>
             <div className="mb-3">
                 <Link to='/signup'>Don't have an account?</Link>
+            </div>
+            <div className="mb-3">
+                <p className='text-danger'>{error}</p>
             </div>
             <button type="submit" className="btn btn-primary">Log In</button>
             <div className='mt-3 w-25 mx-auto'>
