@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 import app from '../../firebase/Firebase';
 
 
@@ -10,18 +10,36 @@ const auth = getAuth(app);
 const LogIn = () => {
 
     const [error, setError] = useState('');
+    const [loginSuccess, setLoginSuccess] = useState('');
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
     // Form Handler
     const loginHandle = (event) => {
+
+        
+        
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
-        form.reset();
+        
+        signInWithEmailAndPassword(auth, email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+            setError('');
+            setLoginSuccess('Login Success');
+            form.reset();
+        })
+        .catch((error) => {
+            setError(error.message)
+            console.log('error', error)
+        })
+
+
 
         // You can't hold empty field
         if (email === '') {
@@ -79,6 +97,7 @@ const LogIn = () => {
             </div>
             <div className="mb-3">
                 <p className='text-danger'>{error}</p>
+                <p className='text-success'>{loginSuccess}</p>
             </div>
             <button type="submit" className="btn btn-primary">Log In</button>
             <div className='mt-3 w-25 mx-auto'>

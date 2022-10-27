@@ -22,6 +22,10 @@ const SignUp = () => {
         form.reset();
         console.log(photoURL, email, password)
 
+        // 
+        if (email === '' || password === '') {
+            alert("Don't hold empty filed.")
+        }
 
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
@@ -30,7 +34,7 @@ const SignUp = () => {
                 
             })
             .catch(error => {
-                setError(error)
+                setError(error.message)
             })
     }
 
