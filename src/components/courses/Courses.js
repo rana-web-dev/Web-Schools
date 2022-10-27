@@ -17,6 +17,9 @@ const Courses = () => {
                 data.map(course => <Course key={course.id} id={course.id} course={course}></Course>)
             }
             </div>
+            <div className='text-center my-5'>
+                    <Link className='text-decoration-none fs-5 bg-primary text-white rounded p-2' to='/premium'>Get Premium Access</Link>
+            </div>
         </div>
     );
 };

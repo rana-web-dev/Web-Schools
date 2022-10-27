@@ -8,7 +8,7 @@ import app from '../../firebase/Firebase';
 const auth = getAuth(app);
 
 const LogIn = () => {
-
+    
     const [error, setError] = useState('');
     const [loginSuccess, setLoginSuccess] = useState('');
 
