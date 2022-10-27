@@ -11,11 +11,11 @@ const Nav = () => {
                         <h5>WEB SCHOOL</h5>
                 </div>
                 <div>
-                    <Link to='*' className='me-3 text-decoration-none'>Home</Link>
-                    <Link to='*' className='me-3 text-decoration-none'>Courses</Link>
-                    <Link to='*' className='me-3 text-decoration-none'>FAQ</Link>
-                    <Link to='*' className='me-3 text-decoration-none'>Blog</Link>
-                    <Link to='*' className='me-3 text-decoration-none'>Dark</Link>
+                    <Link to='/home' className='me-3 text-decoration-none'>Home</Link>
+                    <Link to='/courses' className='me-3 text-decoration-none'>Courses</Link>
+                    <Link to='/faq' className='me-3 text-decoration-none'>FAQ</Link>
+                    <Link to='/blog' className='me-3 text-decoration-none'>Blog</Link>
+                    <Link to='' className='me-3 text-decoration-none'>Dark</Link>
                     <Link to='/signup' className='me-3 text-decoration-none'>Sign Up</Link>
                     <Link to='/login' className='me-3 text-decoration-none'>Log In</Link>
                     <Link to='' className='cursor-pointer' title='user'>

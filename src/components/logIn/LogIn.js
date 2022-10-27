@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 import app from '../../firebase/Firebase';
 
+
 const auth = getAuth(app);
 
 const LogIn = () => {
@@ -41,11 +42,13 @@ const LogIn = () => {
     }
 
     // SignIn with Github
-    const githubSignIn = () => {
+    const githubSignIn = (email, password) => {
         signInWithPopup(auth, githubProvider)
         .then(result => {
             const user = result.user;
             console.log(user);
+
+
         })
         .catch(error => {
             console.error('Error:', error);
